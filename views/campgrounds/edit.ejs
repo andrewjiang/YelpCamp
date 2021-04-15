@@ -1,0 +1,51 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <h1 class="text-center">Edit Campground</h1>
+  <div class="col-6 offset-3">
+    <form action="/campgrounds/<%= campground._id %>?_method=PATCH" method="POST" novalidate class="validated-form">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="campground[title]" value="<%= campground.title %>" required>
+        <div class="invalid-feedback">
+          Please enter a title for your campground
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="campground[location]" value="<%= campground.location %>" required>
+        <div class="invalid-feedback">
+          Please enter a location for your campground
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Image URL</label>
+        <input type="text" class="form-control" id="image" name="campground[image]" value="<%= campground.image %>" required>
+        <div class="invalid-feedback">
+          Please enter a valid URL for your campground
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">$</span>
+          <input type="text" class="form-control" id="price" placeholder="0.00" name="campground[price]" value="<%= campground.price %>" aria-describedby="price-label" required>
+          <div class="invalid-feedback">
+            Please enter a price for your campground
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea type="text" class="form-control" id="description" name="campground[description]" value="" required><%= campground.description %></textarea>
+        <div class="invalid-feedback">
+          Please enter a pleasant description for your campground
+        </div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-info">Update Campground</button>
+      </div>
+    </form>
+    <a href="/campgrounds/<%= campground._id %>">Back to Campground</a>
+  </div>
+</div>
